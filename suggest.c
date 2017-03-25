@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 Boolean checkSuite(char * arg);
 void checktablesuite();
@@ -18,6 +19,7 @@ int main(int argc, char * argv[])
 	{
 		checkSuite(argv[1]);
 		loadfile(argv[1]);
+		printf("END OF PROCESSING\n");
 		return EXIT_SUCCESS;
 	}
 	
@@ -58,5 +60,17 @@ Boolean checkSuite(char * arg)
 
 void checktablesuite()
 {
-	
+	if(firstItem()!=NULL)
+		printf("Test Passed! table is not empty\n");
+	else
+		printf("Test Failed! table is empty\n");
+	if(size()==1)
+	{
+		if(nextItem() == NULL)
+		{
+			printf("Test Passed! table is a one element table\n");
+		}
+		else
+			printf("Test Failed! table is not a one element table\n");
+	}
 }
