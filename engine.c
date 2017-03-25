@@ -53,7 +53,7 @@ void loadfile(char * filename)
 	}
 	printf("Did you mean ... %s\n?", smallWord);
 	printf("There are %d other similar words, would you like to see them?(y/n)", size());
-	while((ch=fgetc(stdin))!='\n');
+  ch = getchar();
 	if(ch == 'Y' || ch == 'y')
 	{
 		char * word = firstItem();
@@ -64,12 +64,10 @@ void loadfile(char * filename)
 				printf("%s\n", word);
 				word = nextItem();
 			}
-			printf("count1: %d, size = %d",count, size());
-			
+			ch = getchar();
 		while(count<size() && (ch!='q' || ch != 'Q'))
 		{
-			assert(ch!='\n');
-			ch = getchar();
+			
 			for(int i = 0; i<PRINTNUM && count< size() && ch == '\n';i++)
 			{
 				count++;
@@ -77,16 +75,9 @@ void loadfile(char * filename)
 				printf("%s\n", word);
 				word = nextItem();
 			}
-			printf("count: %d, size = %d",count, size());
+			ch = getchar();
 		}
-		// count = printwords(count);
-		// ch = getchar();
-		// char *word = firstItem();
-		// while(count<size() && (ch!='q' || ch != 'Q')&& ch == '\n')
-		// {
-			// count = printwords(count);
-			// ch = getchar();
-		// }
+	
 	}
 	
 	fclose(fp);
